@@ -400,7 +400,7 @@ export function CommercePage() {
               <div className="plan-price">{formatVND(plan.price_vnd)} <span>/ {BILLING_PERIOD_LABELS[plan.billing_period].toLowerCase()}</span></div>
               {sale ? <div className="plan-sale-note"><Percent size={13} /> Sale −{Number(sale.discount_percent)}% · {formatVND(Math.round(plan.price_vnd * (100 - Number(sale.discount_percent)) / 100))}</div> : <div className="plan-muted">Không có sale đang chạy</div>}
               <div className="plan-features">{(plan.features ?? []).slice(0, 4).map(feature => <span key={feature}><Check size={12} /> {feature}</span>)}{(!plan.features || plan.features.length === 0) && <span className="plan-muted">Chưa cấu hình quyền lợi</span>}</div>
-              <div className="plan-meta"><span><Layers size={13} /> {plan.entitlements?.offline_downloads ? 'Offline' : 'Online'}</span><span><CreditCard size={13} /> {plan.app_store_product_id || 'Chưa có product ID'}</span></div>
+              <div className="plan-meta"><span><Layers size={13} /> {plan.entitlements?.offline_downloads ? 'Tải offline' : 'Không hỗ trợ offline'}</span><span><CreditCard size={13} /> {plan.app_store_product_id || 'Chưa có product ID'}</span></div>
               <div className="plan-actions">
                 <button className="button secondary small" onClick={() => setPlanForm(planToForm(plan))}><Pencil size={13} /> Sửa</button>
                 <button className="icon-button" title={plan.is_active ? 'Tạm dừng' : 'Kích hoạt'} onClick={() => void togglePlan(plan)} disabled={saving}><Power size={15} /></button>
